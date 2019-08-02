@@ -1,0 +1,21 @@
+***** Improvements and Bug Fixes *****
+------------------------
+1) On Mac, when adding a bank the MM/DD/YYYY textField is cut off with an Ellipses...
+		-- Simply make the window slightly larger in order to also increase the size of the textField.
+		-- Should fix the problem for Mac, and be hardly noticable on Windows
+2) Some fonts are not showing up on Mac
+		-- Research and choose different fonts that are available on both Windows and Mac
+		-- Bookmark on Chrome has the list
+
+***** Features and Functionality to Add *****
+---------------------------------------------
+1) Make the "Delete CD" button work properly
+		-- Make sure to find and delete the proper lines from the banks.txt file, otherwise it may break the program
+2) Allow the User to change their username and password whenever they please
+		-- This may require another txt file so as to not get mixed up with banks.txt
+		-- find a way to hide this file or encrypt it so that you cant look at usernames and passwords
+				>> The same could go for the banks.txt. It should probably be hidden or encrypted
+3) Add a simple calculator feature
+		-- This way the user doesn't have to actually add a bank
+		-- Simply type in the supposed amount, the supposed apy, and term in months
+		-- Then return the same information as the bank cd's but no need to save the data in a txt file
