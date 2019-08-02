@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="550.0" style="-fx-background-color: #bdbdbd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BankInfoController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="545.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <TextField fx:id="amount" editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="195.0" style="-fx-text-fill: BLUE;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="term" editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="195.0" style="-fx-text-fill: BLUE;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="apy" editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="195.0" style="-fx-text-fill: BLUE;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="date" editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="195.0" style="-fx-text-fill: BLUE;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="valueToday" editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="195.0" promptText="Coming Soon" style="-fx-text-fill: BLUE;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="totalValue" editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="195.0" promptText="Coming Soon" style="-fx-text-fill: GREEN;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="maturityDate" editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="195.0" promptText="Coming Soon" style="-fx-text-fill: GREEN;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="6.0" layoutY="144.0" prefHeight="672.0" prefWidth="345.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <TextField editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="340.0" text="Original Amount Deposited:">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="340.0" text="Total Term of CD (in months):">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <TextField editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="340.0" text="APY (Annual Percentage Yield):">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <TextField editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="340.0" text="Date of Purchase:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <TextField editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="340.0" text="Value of CD Today:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="340.0" text="Total Value of CD at Maturity:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField editable="false" focusTraversable="false" prefHeight="51.0" prefWidth="340.0" text="Maturity Date:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <HBox alignment="TOP_CENTER" layoutX="147.0" layoutY="-3.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="850.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <Label fx:id="bankTitle" style="-fx-underline: true;" text="TEST BANK">
+               <font>
+                  <Font name="Algerian" size="64.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox alignment="TOP_CENTER" layoutX="225.0" layoutY="802.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="700.0">
+         <children>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#deleteCD" prefHeight="51.0" prefWidth="139.0" text="Delete CD" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
