@@ -35,45 +35,64 @@ public class NewBankController implements Initializable {
 	private Button next, cancel;
 
 	public void next() throws IOException {
-		String amount;
-		double temp;
-		// format Money
-		try {
-			amount = typeAmount.getText();
-			temp = Double.parseDouble(amount);
-			Locale locale = new Locale("en", "US");
-			NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-			typeAmount.setText(currencyFormatter.format(temp));
-		} catch (Exception e) {
-			amount = typeAmount.getText();
-		}
+		Alert valid = new Alert(AlertType.INFORMATION);
+		valid.setTitle("Error!");
+		valid.setHeaderText(null);
+		valid.setContentText("");
 
-		// display all cells as ready for entering data
-		typeBankName.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
-		typeAmount.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
-		typeTime.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
-		typeAPY.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
-		typeDate.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
+		if (!(typeAmount.getText().matches("\\d*\\.{1}\\d*") || typeAmount.getText().matches("\\d*"))) {
+			valid.setContentText("Enter a valid number for the amount.");
+			valid.showAndWait();
+		} else if (!(typeTime.getText().matches("\\d*"))) {
+			valid.setContentText("Enter a valid number for the time of maturity.");
+			valid.showAndWait();
+		} else if (!(typeAPY.getText().matches("\\d*\\.{1}\\d*") || typeAPY.getText().matches("\\d*"))) {
+			valid.setContentText("Enter a valid number or decimal for the APY.");
+			valid.showAndWait();
+		} else if (!(typeDate.getText().matches("\\d{2}\\/\\d{2}\\/\\d{4}"))) {
+			valid.setContentText("Enter a valid date following the pattern shown.");
+			valid.showAndWait();
+		} else {
+			String amount;
+			double temp;
+			// format Money
+			try {
+				amount = typeAmount.getText();
+				temp = Double.parseDouble(amount);
+				Locale locale = new Locale("en", "US");
+				NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+				typeAmount.setText(currencyFormatter.format(temp));
+			} catch (Exception e) {
+				amount = typeAmount.getText();
+			}
 
-		// Ask to proceed
-		Alert alert = new Alert(AlertType.NONE);
-		alert.setTitle("Confirm Bank Information");
-		alert.setContentText("Is the information correct?");
-		ButtonType yesButton = new ButtonType("Yes");
-		ButtonType noButton = new ButtonType("No", ButtonData.CANCEL_CLOSE);
+			// display all cells as ready for entering data
+			typeBankName.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
+			typeAmount.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
+			typeTime.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
+			typeAPY.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
+			typeDate.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
 
-		alert.getButtonTypes().setAll(yesButton, noButton);
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == yesButton) {
-			// Call a method to write the information to a text file and then re-open the
-			// Main Window
-			writeToFile(typeBankName.getText(), amount, typeTime.getText(), typeAPY.getText(), typeDate.getText());
-			// OR
-			// create a new object of a bank and store the info there.
-			bankAdded();
-		} else if (result.get() == noButton) {
-			// ... user chose NO or closed the dialog
-			// call a method to reset the formatting of the boxes
+			// Ask to proceed
+			Alert alert = new Alert(AlertType.NONE);
+			alert.setTitle("Confirm Bank Information");
+			alert.setContentText("Is the information correct?");
+			ButtonType yesButton = new ButtonType("Yes");
+			ButtonType noButton = new ButtonType("No", ButtonData.CANCEL_CLOSE);
+
+			alert.getButtonTypes().setAll(yesButton, noButton);
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == yesButton) {
+				// Call a method to write the information to a text file and then re-open the
+				// Main Window
+				writeToFile(typeBankName.getText(), amount, typeTime.getText(), typeAPY.getText(), typeDate.getText());
+				// OR
+				// create a new object of a bank and store the info there.
+				bankAdded();
+			} else if (result.get() == noButton) {
+				// ... user chose NO or closed the dialog
+				// call a method to reset the formatting of the boxes
+			}
 		}
 
 	}
@@ -111,7 +130,7 @@ public class NewBankController implements Initializable {
 			System.out.println("ERROR!");
 		}
 	}
-	
+
 	public void cancel() throws IOException {
 		FXMLLoader Loader = new FXMLLoader();
 		Loader.setLocation(getClass().getResource("MainWindow.fxml"));
