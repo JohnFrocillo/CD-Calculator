@@ -67,11 +67,11 @@ public class NewBankController implements Initializable {
 			}
 
 			// display all cells as ready for entering data
-			typeBankName.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
-			typeAmount.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
-			typeTime.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
-			typeAPY.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
-			typeDate.setStyle("-fx-control-inner-background: silver; -fx-font-weight: bold");
+			typeBankName.setStyle("-fx-control-inner-background: yellow; -fx-font-weight: bold");
+			typeAmount.setStyle("-fx-control-inner-background: yellow; -fx-font-weight: bold");
+			typeTime.setStyle("-fx-control-inner-background: yellow; -fx-font-weight: bold");
+			typeAPY.setStyle("-fx-control-inner-background: yellow; -fx-font-weight: bold");
+			typeDate.setStyle("-fx-control-inner-background: yellow; -fx-font-weight: bold");
 
 			// Ask to proceed
 			Alert alert = new Alert(AlertType.NONE);
@@ -91,10 +91,15 @@ public class NewBankController implements Initializable {
 				bankAdded();
 			} else if (result.get() == noButton) {
 				// ... user chose NO or closed the dialog
-				// call a method to reset the formatting of the boxes
+				// reset formatting of the boxes
+				typeBankName.setStyle("");
+				typeAmount.setStyle("");
+				typeTime.setStyle("");
+				typeAPY.setStyle("");
+				typeDate.setStyle("");
+				typeAmount.setText(amount);
 			}
 		}
-
 	}
 
 	public void bankAdded() throws IOException {
