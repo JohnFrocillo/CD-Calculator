@@ -83,6 +83,26 @@ public class LoginController implements Initializable {
 		alert.setContentText("Not supported in this version.");
 		alert.showAndWait();
 	}
+	
+	@FXML
+	private void loginMouseEnter() {
+		login.setStyle("-fx-background-color:white; -fx-background-radius:5em");
+	}
+	
+	@FXML
+	private void loginMouseExit() {
+		login.setStyle("-fx-background-color: #ffe0c2; -fx-background-radius:5em");
+	}
+	
+	@FXML
+	private void forgotPassMouseEnter() {
+		forgotPassword.setStyle("-fx-background-color:white; -fx-background-radius:5em");
+	}
+	
+	@FXML
+	private void forgotPassMouseExit() {
+		forgotPassword.setStyle("-fx-background-color: #ffe0c2; -fx-background-radius:5em");
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
