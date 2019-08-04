@@ -1,5 +1,5 @@
 ***** Improvements and Bug Fixes *****
-------------------------
+--------------------------------------
 1) On Mac, when adding a bank the MM/DD/YYYY textField is cut off with an Ellipses...
 		-- Simply make the window slightly larger in order to also increase the size of the textField.
 		-- Should fix the problem for Mac, and be hardly noticable on Windows
@@ -7,8 +7,6 @@
 		-- Research and choose different fonts that are available on both Windows and Mac
 		-- Bookmark on Chrome has the list
 3) Add an effect whenever the mouse hovers over a button
-	***** COMPLETE *****
-	4) Include error checking so that the user can't, for example, enter letters and symbols for an amount of money, etc
 
 ***** Features and Functionality to Add *****
 ---------------------------------------------
@@ -22,3 +20,7 @@
 		-- This way the user doesn't have to actually add a bank
 		-- Simply type in the supposed amount, the supposed apy, and term in months
 		-- Then return the same information as the bank cd's but no need to save the data in a txt file
+
+***** COMPLETED TASKS *****
+---------------------------
+- Include error checking so that the user can't, for example, enter letters and symbols for an amount of money, etc
