@@ -19,8 +19,13 @@
          </font></Label>
       <TextField fx:id="username" layoutX="143.0" layoutY="6.0" prefHeight="35.0" prefWidth="168.0" promptText="Enter Username" />
       <PasswordField fx:id="password" layoutX="143.0" layoutY="59.0" onAction="#login" prefHeight="35.0" prefWidth="168.0" promptText="Enter Password" />
-      <VBox alignment="TOP_CENTER" layoutX="84.0" layoutY="112.0" prefHeight="108.0" prefWidth="232.0">
+      <VBox alignment="TOP_CENTER" layoutX="2.0" layoutY="112.0" prefHeight="147.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="112.0">
          <children>
+            <Label text="Default login: Username: John, Password: money">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
             <Button fx:id="login" mnemonicParsing="false" onAction="#login" onMouseEntered="#loginMouseEnter" onMouseExited="#loginMouseExit" prefHeight="35.0" prefWidth="91.0" style="-fx-background-radius: 5em; -fx-background-color: #ffe0c2;" text="Login">
                <VBox.margin>
                   <Insets bottom="10.0" />
