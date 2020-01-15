@@ -252,30 +252,42 @@ public class BankInfoController implements Initializable {
 	}
 	
 	public void deleteCD() throws IOException {
+		Alert v1 = new Alert(AlertType.INFORMATION);
+		v1.setTitle("Version 1.0 Notice");
+		v1.setHeaderText(null);
+		v1.setContentText("Deleting CD's in currently in development.");
+		v1.showAndWait();
+		/**
+		FileInputStream fs = new FileInputStream("Banks.txt");
+		BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+		FileWriter fw = new FileWriter("newBanks.txt", true);
+		PrintWriter pw = new PrintWriter(fw);
+		
 		if(bankNum == 1) {
-			FileInputStream fs = new FileInputStream("Banks.txt");
-			BufferedReader br = new BufferedReader(new InputStreamReader(fs));
-			for(int i = 0; i < 6; i ++) {
+			for(int i = 1; i <= 6; i ++) {
 				br.readLine();
 			}
-			FileWriter fw = new FileWriter("newBanks.txt", true);
-			PrintWriter pw = new PrintWriter(fw);
-			String moveLine = "";
-			moveLine = br.readLine();
-			while(moveLine != null) {
-				pw.println(moveLine);
-				moveLine = br.readLine();
-			}
-			
-			br.close();
-			pw.close();
-			
-			File f = new File("Banks.txt");
-			File temp = new File("newBanks.txt");
-			f.delete();
-			temp.renameTo(new File("Banks.txt"));
-			
 		}
+		if(bankNum == 2) {
+			for(int i = 1; i < 12; i ++) {
+				br.readLine();
+			}
+		}
+		
+		String moveLine = "";
+		moveLine = br.readLine();
+		while(moveLine != null) {
+			pw.println(moveLine);
+			moveLine = br.readLine();
+		}
+		
+		br.close();
+		pw.close();
+		
+		File f = new File("Banks.txt");
+		File temp = new File("newBanks.txt");
+		f.delete();
+		temp.renameTo(new File("Banks.txt"));
 		
 		//Reload the Main Window to refresh the changed data
 		FXMLLoader Loader = new FXMLLoader();
@@ -291,6 +303,8 @@ public class BankInfoController implements Initializable {
 		//Delete the current bank info window
 		Stage stageThis = (Stage)bankTitle.getScene().getWindow();
 		stageThis.close();
+		
+		**/
 	}
 	
 	public void goBack() throws IOException {
