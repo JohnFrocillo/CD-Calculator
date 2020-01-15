@@ -12,6 +12,7 @@
 ---------------------------------------------
 1) Make the "Delete CD" button work properly
 		-- Make sure to find and delete the proper lines from the banks.txt file, otherwise it may break the program
+		-- Currently under development. Lots of progress made, but code still commented out until stable
 2) Allow the User to change their username and password whenever they please
 		-- This may require another txt file so as to not get mixed up with banks.txt
 		-- find a way to hide this file or encrypt it so that you cant look at usernames and passwords
@@ -20,7 +21,4 @@
 		-- This way the user doesn't have to actually add a bank
 		-- Simply type in the supposed amount, the supposed apy, and term in months
 		-- Then return the same information as the bank cd's but no need to save the data in a txt file
-
-***** COMPLETED TASKS *****
----------------------------
-- Include error checking so that the user can't, for example, enter letters and symbols for an amount of money, etc
+		-- Should be an easy addition with reusable code
