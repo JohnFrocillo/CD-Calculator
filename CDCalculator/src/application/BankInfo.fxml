@@ -111,8 +111,13 @@
             </Label>
          </children>
       </HBox>
-      <VBox alignment="TOP_CENTER" layoutX="225.0" layoutY="802.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="700.0">
+      <VBox alignment="TOP_CENTER" layoutX="225.0" layoutY="802.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="700.0">
          <children>
+            <Button mnemonicParsing="false" onAction="#goBack" text="&lt;- Go Back">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
             <Button focusTraversable="false" mnemonicParsing="false" onAction="#deleteCD" prefHeight="51.0" prefWidth="139.0" text="Delete CD" textFill="RED">
                <font>
                   <Font size="18.0" />

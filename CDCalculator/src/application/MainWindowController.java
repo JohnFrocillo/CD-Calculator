@@ -1,5 +1,3 @@
-//NEXT THING TO DO IS ADD ACTION LISTENER AND WINDOW FOR BANK BUTTONS
-
 package application;
 
 import java.io.BufferedReader;
@@ -20,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MainWindowController implements Initializable {
+	
 
 	@FXML
 	private Button newCD;
@@ -78,6 +77,11 @@ public class MainWindowController implements Initializable {
 		stage.setTitle(bank.sBankTitle + " Certificate of Deposit");
 		stage.setScene(new Scene(p));
 		stage.show();
+		
+		//close the current window in order for it to be refreshed
+		//if any changes are made (such as deleting the selected cd)
+		Stage stageThis = (Stage)bank1.getScene().getWindow();
+		stageThis.close();
 	}
 
 	public void newBank() throws IOException {

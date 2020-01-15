@@ -1,10 +1,13 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
-
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -16,11 +19,16 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class BankInfoController implements Initializable {
 	int bankNum = 0;
@@ -30,12 +38,16 @@ public class BankInfoController implements Initializable {
 	@FXML
 	private TextField amount, term, apy, date, valueToday, totalValue, maturityDate;
 
+	//Disable the (x) close button and add a goBack button to reload the main window.
+	
+	
 	public void setBankNum(int bankNum) throws IOException {
 		this.bankNum = bankNum;
 		displayInfo();
 	}
 
 	private void displayInfo() throws IOException {
+		
 		FileInputStream fs = new FileInputStream("Banks.txt");
 		BufferedReader br = new BufferedReader(new InputStreamReader(fs));
 
@@ -46,6 +58,7 @@ public class BankInfoController implements Initializable {
 			sTerm = br.readLine();
 			sAPY = br.readLine();
 			sDate = br.readLine();
+			br.close();
 		}
 
 		if (bankNum == 2) {
@@ -165,6 +178,7 @@ public class BankInfoController implements Initializable {
 		calculateMaturityPrice();
 		calculateCurrentValue();
 		calculateMaturityDate();
+		
 	}
 
 	private void calculateMaturityPrice() {
@@ -237,19 +251,68 @@ public class BankInfoController implements Initializable {
 		maturityDate.setText(formattedDate);
 	}
 	
-	public void deleteCD() {
+	public void deleteCD() throws IOException {
 		if(bankNum == 1) {
-			// ********** CONTINUE HERE **********
+			FileInputStream fs = new FileInputStream("Banks.txt");
+			BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+			for(int i = 0; i < 6; i ++) {
+				br.readLine();
+			}
+			FileWriter fw = new FileWriter("newBanks.txt", true);
+			PrintWriter pw = new PrintWriter(fw);
+			String moveLine = "";
+			moveLine = br.readLine();
+			while(moveLine != null) {
+				pw.println(moveLine);
+				moveLine = br.readLine();
+			}
+			
+			br.close();
+			pw.close();
+			
+			File f = new File("Banks.txt");
+			File temp = new File("newBanks.txt");
+			f.delete();
+			temp.renameTo(new File("Banks.txt"));
+			
 		}
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Version 1.0 Notice");
-		alert.setHeaderText(null);
-		alert.setContentText("Not supported in this version. Coming soon.\nContact administrator if a deletion is needed.");
-		alert.showAndWait();
+		
+		//Reload the Main Window to refresh the changed data
+		FXMLLoader Loader = new FXMLLoader();
+		Loader.setLocation(getClass().getResource("MainWindow.fxml"));
+		Loader.load();
+
+		Parent p = Loader.getRoot();
+		Stage stage = new Stage();
+		stage.setTitle("Certificate of Deposit Calculator");
+		stage.setScene(new Scene(p));
+		stage.show();
+		
+		//Delete the current bank info window
+		Stage stageThis = (Stage)bankTitle.getScene().getWindow();
+		stageThis.close();
+	}
+	
+	public void goBack() throws IOException {
+		//Reload the Main Window to refresh the changed data
+		FXMLLoader Loader = new FXMLLoader();
+		Loader.setLocation(getClass().getResource("MainWindow.fxml"));
+		Loader.load();
+		
+		Parent p = Loader.getRoot();
+		Stage stage = new Stage();
+		stage.setTitle("Certificate of Deposit Calculator");
+		stage.setScene(new Scene(p));
+		stage.show();
+		
+		//Delete the current bank info window
+		Stage stageThis = (Stage)bankTitle.getScene().getWindow();
+		stageThis.close();
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 	}
+	
 }
